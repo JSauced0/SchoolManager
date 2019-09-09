@@ -1,0 +1,14 @@
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\bin\Debug\netcoreapp2.2\Escuela.API.deps.json
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\bin\Debug\netcoreapp2.2\Escuela.API.runtimeconfig.json
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\bin\Debug\netcoreapp2.2\Escuela.API.runtimeconfig.dev.json
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\bin\Debug\netcoreapp2.2\Escuela.API.dll
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\bin\Debug\netcoreapp2.2\Escuela.API.pdb
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.csprojAssemblyReference.cache
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.csproj.CoreCompileInputs.cache
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.RazorAssemblyInfo.cache
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.RazorAssemblyInfo.cs
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.AssemblyInfoInputs.cache
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.AssemblyInfo.cs
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.RazorTargetAssemblyInfo.cache
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.dll
+C:\Users\Eduardo Flores\Documents\Code\Escuela.API\obj\Debug\netcoreapp2.2\Escuela.API.pdb

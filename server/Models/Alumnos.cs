@@ -9,6 +9,7 @@ namespace Escuela.API.Models
         public string Expediente { get; set; }
         public string Nombre { get; set; }
         public int Grupo { get; set; }
+        public bool Activo { get; set; }
 
         public virtual Grupos GrupoNavigation { get; set; }
     }

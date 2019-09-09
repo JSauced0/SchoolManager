@@ -16,6 +16,7 @@ namespace Escuela.API.Models
         public string Apellido { get; set; }
         public string Direccion { get; set; }
         public string Numero { get; set; }
+        public bool Activo { get; set; }
 
         public virtual ICollection<Grupos> Grupos { get; set; }
     }

@@ -12,6 +12,7 @@ namespace Escuela.API.Models
 
         public int Id { get; set; }
         public string Nombre { get; set; }
+        public bool Activo { get; set; }
 
         public virtual ICollection<Asignaciones> Asignaciones { get; set; }
     }

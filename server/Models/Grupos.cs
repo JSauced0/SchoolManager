@@ -14,6 +14,7 @@ namespace Escuela.API.Models
         public string Nombre { get; set; }
         public int Grado { get; set; }
         public int Maestro { get; set; }
+        public bool Activo { get; set; }
 
         public virtual Grados GradoNavigation { get; set; }
         public virtual Maestros MaestroNavigation { get; set; }

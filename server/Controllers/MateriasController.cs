@@ -55,7 +55,9 @@ namespace Escuela.API.Controllers
         [HttpDelete("{id}")]
         public async Task DeleteGrado(int id)
         {
-            _context.Materias.Remove(materias.FirstOrDefault(a => a.Id == id));
+            var materia = await _context.Materias.FirstOrDefaultAsync(a => a.Id == id);
+            materia.Activo = false;
+            _context.Materias.Update(materia);
             await _context.SaveChangesAsync();
         }
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eduardo Flores\\Documents\\Code\\Escuela.API\\Escuela.API.csproj": {}
+    "C:\\Users\\Eduardo Flores\\Documents\\GitHub\\SchoolManager\\server\\Escuela.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eduardo Flores\\Documents\\Code\\Escuela.API\\Escuela.API.csproj": {
+    "C:\\Users\\Eduardo Flores\\Documents\\GitHub\\SchoolManager\\server\\Escuela.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo Flores\\Documents\\Code\\Escuela.API\\Escuela.API.csproj",
+        "projectUniqueName": "C:\\Users\\Eduardo Flores\\Documents\\GitHub\\SchoolManager\\server\\Escuela.API.csproj",
         "projectName": "Escuela.API",
-        "projectPath": "C:\\Users\\Eduardo Flores\\Documents\\Code\\Escuela.API\\Escuela.API.csproj",
+        "projectPath": "C:\\Users\\Eduardo Flores\\Documents\\GitHub\\SchoolManager\\server\\Escuela.API.csproj",
         "packagesPath": "C:\\Users\\Eduardo Flores\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo Flores\\Documents\\Code\\Escuela.API\\obj\\",
+        "outputPath": "C:\\Users\\Eduardo Flores\\Documents\\GitHub\\SchoolManager\\server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

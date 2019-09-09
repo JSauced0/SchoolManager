@@ -54,7 +54,9 @@ namespace Escuela.API.Controllers
         [HttpDelete("{id}")]
         public async Task DeleteMaestro(int id)
         {
-            _context.Maestros.Remove(maestros.FirstOrDefault(a => a.Id == id));
+            var maestro = await _context.Maestros.FirstOrDefaultAsync(a => a.Id == id);
+            maestro.Activo = false;
+            _context.Maestros.Update(maestro);
             await _context.SaveChangesAsync();
         }
     }

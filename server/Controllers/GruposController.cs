@@ -56,7 +56,9 @@ namespace Escuela.API.Controllers
         [HttpDelete("{id}")]
         public async Task DeleteGrupo(int id)
         {
-            _context.Grupos.Remove(grupos.FirstOrDefault(a => a.Id == id));
+            var grupo = await _context.Grupos.FirstOrDefaultAsync(a => a.Id == id);
+            grupo.Activo = false;
+            _context.Grupos.Update(grupo);
             await _context.SaveChangesAsync();
         }
     }

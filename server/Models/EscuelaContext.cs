@@ -104,6 +104,7 @@ namespace Escuela.API.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Direccion)
+                    .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
@@ -118,6 +119,7 @@ namespace Escuela.API.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Numero)
+                    .IsRequired()
                     .HasMaxLength(10)
                     .IsUnicode(false);
             });

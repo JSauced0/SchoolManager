@@ -32,14 +32,14 @@ namespace Escuela.API.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Asignaciones>>> GetGrado(int id)
+        public async Task<ActionResult<List<Asignaciones>>> GetAsignacion(int id)
         {
             return await asignaciones.Where(a => a.Id == id).ToListAsync();
         }
 
         // POST api/values
         [HttpPost]
-        public async Task PostGrado(Asignaciones asignacion)
+        public async Task PostAsignacion(Asignaciones asignacion)
         {
             _context.Asignaciones.Add(asignacion);
             await _context.SaveChangesAsync();
@@ -47,7 +47,7 @@ namespace Escuela.API.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task PutGrado(Asignaciones asignacion)
+        public async Task PutAsignacion(Asignaciones asignacion)
         {
             _context.Asignaciones.Update(asignacion);
             await _context.SaveChangesAsync();
@@ -55,7 +55,7 @@ namespace Escuela.API.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task DeleteGrado(int id)
+        public async Task DeleteAsignacion(int id)
         {
             _context.Asignaciones.Remove(asignaciones.FirstOrDefault(a => a.Id == id));
             await _context.SaveChangesAsync();

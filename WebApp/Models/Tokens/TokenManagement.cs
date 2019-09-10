@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
-namespace server.Models
+namespace WebApp.Models
 {
     [JsonObject("tokenManagement")]
     public class TokenManagement

@@ -1,4 +1,4 @@
-namespace server.Interfaces
+namespace WebApp.Interfaces
 {
     public interface IUserManagementService
     {

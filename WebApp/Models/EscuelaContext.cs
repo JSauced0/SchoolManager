@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Escuela.API.Models
+namespace WebApp.Models
 {
     public partial class EscuelaContext : DbContext
     {

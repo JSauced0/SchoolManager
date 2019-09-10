@@ -1,5 +1,4 @@
 using System.Text;
-using Escuela.API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,9 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using server.Interfaces;
-using server.Models;
-using server.Services;
+using WebApp.Interfaces;
+using WebApp.Models;
+using WebApp.Services;
 
 namespace WebApp
 {

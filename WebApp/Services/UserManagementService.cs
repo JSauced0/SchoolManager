@@ -1,6 +1,6 @@
-using server.Interfaces;
+using WebApp.Interfaces;
 
-namespace server.Services
+namespace WebApp.Services
 {
     public class UserManagementService : IUserManagementService
     {

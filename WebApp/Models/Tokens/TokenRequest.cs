@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace server.Models.Tokens
+namespace WebApp.Models.Tokens
 {
     public class TokenRequest
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Escuela.API.Models
+namespace WebApp.Models
 {
     public partial class Maestros
     {

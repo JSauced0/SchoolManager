@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace server.Controllers
+namespace WebApp.Controllers
 {
     public class LoginController : Controller
     {

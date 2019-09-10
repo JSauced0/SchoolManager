@@ -1,6 +1,6 @@
-using server.Models.Tokens;
+using WebApp.Models.Tokens;
 
-namespace server.Interfaces
+namespace WebApp.Interfaces
 {
     public interface IAuthenticateService
     {

@@ -4,11 +4,11 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using server.Interfaces;
-using server.Models;
-using server.Models.Tokens;
+using WebApp.Interfaces;
+using WebApp.Models;
+using WebApp.Models.Tokens;
 
-namespace server.Services
+namespace WebApp.Services
 {
     public class TokenAuthenticationService : IAuthenticateService
     {

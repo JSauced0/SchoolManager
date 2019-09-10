@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using server.Interfaces;
-using server.Models.Tokens;
+using WebApp.Interfaces;
+using WebApp.Models.Tokens;
 
-namespace server.Controllers
+namespace WebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

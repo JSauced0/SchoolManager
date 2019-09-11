@@ -1,3 +1,4 @@
+import { AddAlumnosComponent } from './components/add-alumnos/add-alumnos.component';
 import { AlumnosService } from './services/alumnos.service';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { MaestrosComponent } from './components/maestros/maestros.component';
@@ -22,17 +23,20 @@ import { CounterComponent } from './components/counter/counter.component';
     CounterComponent,
     AlumnosComponent,
     GruposComponent,
-    MaestrosComponent
+    MaestrosComponent,
+    AddAlumnosComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+   
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       {path: 'alumnos', component: AlumnosComponent},
       {path: 'maestros', component: MaestrosComponent},
       {path: 'grupos', component: GruposComponent},
+      {path: 'add-alumnos', component: AddAlumnosComponent},
       
     ])
   ],

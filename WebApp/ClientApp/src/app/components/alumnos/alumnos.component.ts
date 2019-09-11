@@ -1,5 +1,5 @@
 import { AlumnosService } from './../../services/alumnos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-alumnos',
@@ -7,12 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alumnos.component.css']
 })
 export class AlumnosComponent implements OnInit {
-
+  @HostBinding('class') classes = 'row';
+  alumnos: any = []
   constructor(private alumnosService: AlumnosService) { }
 
   ngOnInit() {
     this.alumnosService.getAlumnos().subscribe(
-      res => console.log(res),
+      res => {
+        this.alumnos = res;
+      },
       err=>console.error(err)
     );
   }

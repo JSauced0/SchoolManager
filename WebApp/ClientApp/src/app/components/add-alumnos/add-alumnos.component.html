@@ -1,0 +1,46 @@
+
+<div class="col-md-4 offset-md-2">
+  <div class="card">
+    <div class="card-body">
+      <form>
+        <h3>Registrar alumno</h3>
+        <div class="form-group">
+          <input type="text" name="nombre" [(ngModel)]="alumno.nombre" placeholder="Nombre" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="expediente"  [(ngModel)]="alumno.expediente" placeholder="Expediente" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="grupo" [(ngModel)]="alumno.grupo" placeholder="Grupo" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="activo"  [(ngModel)]="alumno.activo" placeholder="Activo" class="form-control">
+        </div>
+        <button class="btn btn-success btn-block" (click)="saveAlumno()">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-header">
+          <label>Nombre: </label> {{alumno.nombre}} 
+      </div>
+      <div class="card-body">
+        <div>
+            <label>Expediente: </label>{{alumno.expediente}}
+        </div>
+        <div>
+            <label>Grupo: </label>{{alumno.grupo}}
+        </div>
+        <div>
+            <label>Activo: </label>{{alumno.activo}}
+        </div>
+      </div>
+  
+    </div>
+  </div>
+

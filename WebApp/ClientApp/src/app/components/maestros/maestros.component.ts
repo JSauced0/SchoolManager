@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding} from '@angular/core';
 import { MaestrosService } from 'src/app/services/maestros/maestros.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { MaestrosService } from 'src/app/services/maestros/maestros.service';
   styleUrls: ['./maestros.component.css']
 })
 export class MaestrosComponent implements OnInit {
+  @HostBinding('class') classes = 'row';
   maestros: any = []
 
   constructor(private maestrosService: MaestrosService) { }

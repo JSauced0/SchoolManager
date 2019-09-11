@@ -21,7 +21,5 @@ export class AlumnosComponent implements OnInit {
         console.error(err)
       }
     );
-    
   }
-
 }

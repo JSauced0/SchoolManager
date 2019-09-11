@@ -14,6 +14,8 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { AddMaestrosComponent } from './components/maestros/add-maestros/add-maestros.component';
+import { MaestrosService } from './services/maestros/maestros.service';
+import { GruposService } from './services/grupos/grupos.service';
 
 
 @NgModule({
@@ -32,17 +34,17 @@ import { AddMaestrosComponent } from './components/maestros/add-maestros/add-mae
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-   
+    
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       {path: 'alumnos', component: AlumnosComponent},
       {path: 'maestros', component: MaestrosComponent},
       {path: 'grupos', component: GruposComponent},
       {path: 'add-alumnos', component: AddAlumnosComponent},
-      {path: 'add-maestros', component: AddMaestrosComponent}
+      {path: 'add-maestros', component: AddMaestrosComponent},
     ])
   ],
-  providers: [AlumnosService],
+  providers: [AlumnosService, MaestrosService, GruposService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

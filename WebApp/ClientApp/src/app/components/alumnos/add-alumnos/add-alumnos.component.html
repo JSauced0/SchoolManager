@@ -11,7 +11,9 @@
             <input type="text" name="expediente"  [(ngModel)]="alumno.expediente" placeholder="Expediente" class="form-control">
         </div>
         <div class="form-group">
-            <input type="text" name="grupo" [(ngModel)]="alumno.grupo" placeholder="Grupo" class="form-control">
+          <select class="form-control"  [(ngModel)]="alumno.grupo"  *ngFor="let grupo of grupos" name="grupoSelect" id="grupoSelect">
+              <option name="grupo" [ngValue]=grupo.id>{{grupo.nombre}}</option>
+          </select>
         </div>
         <div class="form-group">
             <input type="text" name="activo"  [(ngModel)]="alumno.activo" placeholder="Activo" class="form-control">

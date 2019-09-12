@@ -1,6 +1,6 @@
-export interface Alumno{
-    Nombre: String;
-    Expediente: String;
-    Grupo: number;
-    Activo: Boolean;
+export interface Alumno {
+    nombre: string;
+    expediente: string;
+    grupo: number;
+    activo: boolean;
 }

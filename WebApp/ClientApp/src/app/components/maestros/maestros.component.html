@@ -1,3 +1,52 @@
-<p>
-  maestros works!
-</p>
+<div class="container">
+  <h3>Lista de maestros en el sistema</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <label>¿No encuentra al maestro? </label>
+    </div>
+    <div class="col-md-2">
+      <div [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/add-maestros"]'> Registrelo Aquí</a>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
+<div class="col-md-4" *ngFor="let maestro of maestros">
+  <div class="card text-center">
+    <div class="card-header">
+      <b>{{maestro.nombre}}</b>
+    </div>
+    <div class="card-body">
+      <div>
+        <label> <b> Expediente: </b></label> {{maestro.expediente}}
+      </div>
+      <div>
+        <label><b>Nombre:</b></label> {{maestro.nombre}}
+      </div>
+      <div>
+        <label><b>Apellido:</b></label> {{maestro.apellido}}
+      </div>
+      <div>
+        <label><b>Direccion:</b></label> {{maestro.direccion}}
+      </div>
+      <div>
+        <label><b>Telefono:</b></label> {{maestro.numero}}
+      </div>
+      <div *ngIf="maestro.activo == true; else elseBlock">
+        <label><b>Activo</b></label>
+      </div>
+      <ng-template #elseBlock><label><b>Inactivo</b></label></ng-template>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-info btn-block"><i class="fa fa-icon-edit" aria-hidden="true"></i> Editar</button>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-warning btn-block"><i class="fa fa-ban" aria-hidden="true"></i> Desactivar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

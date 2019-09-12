@@ -30,14 +30,14 @@ namespace WebApp.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Materias>>> GetGrado(int id)
+        public async Task<ActionResult<List<Materias>>> GetMateria(int id)
         {
             return await materias.Where(a => a.Id == id).ToListAsync();
         }
 
         // POST api/values
         [HttpPost]
-        public async Task PostGrado(Materias materia)
+        public async Task PostMateria(Materias materia)
         {
             _context.Materias.Add(materia);
             await _context.SaveChangesAsync();
@@ -45,7 +45,7 @@ namespace WebApp.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task PutGrado(Materias materia)
+        public async Task PutMateria(Materias materia)
         {
             _context.Materias.Update(materia);
             await _context.SaveChangesAsync();
@@ -53,7 +53,7 @@ namespace WebApp.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task DeleteGrado(int id)
+        public async Task DeleteMateria(int id)
         {
             var materia = await _context.Materias.FirstOrDefaultAsync(a => a.Id == id);
             materia.Activo = false;

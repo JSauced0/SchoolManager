@@ -1,14 +1,14 @@
 <div class="container">
   <h3>Lista de alumnos en el sistema</h3>
   <div class="row">
-      <div class="col-md-3">
-      <label>¿No encuentra el alumno? </label> 
+    <div class="col-md-3">
+      <label>¿No encuentra el alumno? </label>
+    </div>
+    <div class="col-md-2">
+      <div [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/add-alumnos"]'> Registrelo Aquí</a>
       </div>
-      <div class="col-md-2">
-          <div [routerLinkActive]='["link-active"]'>
-              <a  [routerLink]='["/add-alumnos"]'> Registrelo Aquí</a>
-            </div>
-      </div>
+    </div>
   </div>
   <br>
 </div>
@@ -16,29 +16,28 @@
 <div class="col-md-4" *ngFor="let alumno of alumnos">
   <div class="card text-center">
     <div class="card-header">
-      {{alumno.nombre}} 
+      <b>{{alumno.nombre}}</b>
     </div>
     <div class="card-body">
       <div>
-          <label>Expediente: </label>{{alumno.expediente}}
+        <label> <b> Expediente: </b></label> {{alumno.expediente}}
       </div>
       <div>
-          <label>Grupo: </label>{{alumno.grupo}}
+        <label><b>Grupo:</b></label> {{alumno.grupoNavigation.nombre}}
       </div>
-      <div>
-          <label>Activo: </label>{{alumno.activo}}
+      <div *ngIf="alumno.activo == true; else elseBlock">
+        <label><b>Activo</b></label>
       </div>
+      <ng-template #elseBlock><label><b>Inactivo</b></label></ng-template>
       <div class="row">
         <div class="col-md-6">
-            <button class="btn btn-info btn-block" ><i class="fa fa-icon-edit" aria-hidden="true"></i> Editar</button>
+          <button class="btn btn-info btn-block"><i class="fa fa-icon-edit" aria-hidden="true"></i> Editar</button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-warning btn-block" ><i class="fa fa-ban" aria-hidden="true"></i> Desactivar</button>
-          </div>
+          <button class="btn btn-warning btn-block"><i class="fa fa-ban" aria-hidden="true"></i> Desactivar</button>
+        </div>
       </div>
     </div>
-
   </div>
+  <br>
 </div>
-
-

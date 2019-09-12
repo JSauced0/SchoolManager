@@ -1,0 +1,55 @@
+
+<div class="col-md-4 offset-md-2">
+  <div class="card">
+    <div class="card-body">
+      <form>
+        <h3>Registrar maestro</h3>
+        <div class="form-group">
+          <input type="text" name="nombre" [(ngModel)]="maestro.nombre" placeholder="Nombre" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="apellido" [(ngModel)]="maestro.apellido" placeholder="Apellido" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="expediente"  [(ngModel)]="maestro.expediente" placeholder="Expediente" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="direccion"  [(ngModel)]="maestro.direccion" placeholder="Direccion" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="numero"  [(ngModel)]="maestro.numero" placeholder="Telefono" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="activo"  [(ngModel)]="maestro.activo" placeholder="Activo" class="form-control">
+        </div>
+        <button class="btn btn-success btn-block" (click)="saveMaestro()">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-header">
+          <label><b>Nombre:</b> </label> {{maestro.nombre}} {{maestro.apellido}}
+      </div>
+      <div class="card-body">
+        <div>
+            <label><b>Expediente:</b> </label> {{maestro.expediente}}
+        </div>
+        <div>
+            <label><b>Direccion:</b> </label> {{maestro.direccion}}
+        </div>
+        <div>
+            <label><b>Telefono:</b> </label> {{maestro.numero}}
+        </div>
+        <div>
+            <label><b>Activo:</b> </label> {{maestro.activo}}
+        </div>
+      </div>
+  
+    </div>
+  </div>
+

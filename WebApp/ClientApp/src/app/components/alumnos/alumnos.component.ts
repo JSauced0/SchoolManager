@@ -1,5 +1,6 @@
-import { AlumnosService } from './../../services/alumnos.service';
+import { AlumnosService } from '../../services/alumnos/alumnos.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { GruposService } from 'src/app/services/grupos/grupos.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -16,8 +17,11 @@ export class AlumnosComponent implements OnInit {
       res => {
         this.alumnos = res;
       },
-      err=>console.error(err)
+      err=>{
+        console.error(err)
+      }
     );
+    
   }
 
 }

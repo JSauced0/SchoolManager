@@ -1,4 +1,4 @@
-import { Alumno } from './../models/alumnos';
+import { Alumno } from '../../models/alumnos';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
@@ -18,7 +18,7 @@ export class AlumnosService {
   }
 
   saveAlumno(alumno: Alumno){
-    return this.http.post(`${this.apiUrl}/alumnos/`,alumno);
+    return this.http.post(`${this.apiUrl}/alumnos/`, alumno);
   }
 
   updateAlumno(id, updateAlumno){

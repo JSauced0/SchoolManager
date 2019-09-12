@@ -1,5 +1,5 @@
-import { AddAlumnosComponent } from './components/add-alumnos/add-alumnos.component';
-import { AlumnosService } from './services/alumnos.service';
+import { AddAlumnosComponent } from './components/alumnos/add-alumnos/add-alumnos.component';
+import { AlumnosService } from './services/alumnos/alumnos.service';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { MaestrosComponent } from './components/maestros/maestros.component';
 import { AlumnosComponent } from './components/alumnos/alumnos.component';
@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { AddMaestrosComponent } from './components/maestros/add-maestros/add-maestros.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { CounterComponent } from './components/counter/counter.component';
     GruposComponent,
     MaestrosComponent,
     AddAlumnosComponent,
+    AddMaestrosComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +39,7 @@ import { CounterComponent } from './components/counter/counter.component';
       {path: 'maestros', component: MaestrosComponent},
       {path: 'grupos', component: GruposComponent},
       {path: 'add-alumnos', component: AddAlumnosComponent},
-      
+      {path: 'add-maestros', component: AddMaestrosComponent}
     ])
   ],
   providers: [AlumnosService],

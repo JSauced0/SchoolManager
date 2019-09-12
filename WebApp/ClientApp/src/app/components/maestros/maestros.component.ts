@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MaestrosService } from 'src/app/services/maestros/maestros.service';
 
 @Component({
   selector: 'app-maestros',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./maestros.component.css']
 })
 export class MaestrosComponent implements OnInit {
+  maestros: any = []
 
-  constructor() { }
+  constructor(private maestrosService: MaestrosService) { }
 
   ngOnInit() {
+    this.maestrosService.getMaestros().subscribe(
+      res => {
+        this.maestros = res;
+      },
+      err=>{
+        console.error(err)
+      }
+    );
   }
-
 }

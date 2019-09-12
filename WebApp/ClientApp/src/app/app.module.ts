@@ -16,6 +16,8 @@ import { CounterComponent } from './components/counter/counter.component';
 import { AddMaestrosComponent } from './components/maestros/add-maestros/add-maestros.component';
 import { MaestrosService } from './services/maestros/maestros.service';
 import { GruposService } from './services/grupos/grupos.service';
+import { AsignacionComponent } from './components/asignacion/asignacion.component';
+import { MateriasComponent } from './components/materias/materias.component';
 
 
 @NgModule({
@@ -24,11 +26,13 @@ import { GruposService } from './services/grupos/grupos.service';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    AlumnosComponent,
-    GruposComponent,
-    MaestrosComponent,
     AddAlumnosComponent,
     AddMaestrosComponent,
+    AlumnosComponent,
+    AsignacionComponent,
+    GruposComponent,
+    MaestrosComponent,
+    MateriasComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

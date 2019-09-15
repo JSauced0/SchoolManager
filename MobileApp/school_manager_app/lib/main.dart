@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;  // Para manejar Peticiones HTTP
-import 'dart:async';
-import 'dart:convert';  // to conver http response into a JSON.
-
-
+import 'package:http/http.dart' as http; // Para manejar Peticiones HTTP
+import 'dart:async'; // ASYNC AWAIT DART
+import 'dart:convert'; // to conver http response into a JSON.
+import 'dart:core'; // SOMETHING
+import 'alumnos.dart'; // Alumnos del APi
+import 'package:json_annotation/json_annotation.dart';
+part 'Alumno.g.dart';  // IDK BUT I HOPE THIS WILL WORK 
 // Metodo Principal que manda a llamar a Stateful Widget
-void main(){
+void main() {
   runApp(MaterialApp(
     home: HomePage(),
   ));
@@ -13,31 +15,62 @@ void main(){
 
 // Homepage Class que manda a llamar a _Home Page State
 class HomePage extends StatefulWidget {
-  @override 
+  @override
   _HomePageState createState() => _HomePageState();
- }
+}
 
+Future getData(){
+   Future<List<Alumno>> o = obtenerAlumno.getAlumno();
+  debugPrint(o.toString());
+}
+void initState(){
+  getData();
+}
 // Aqui es donde la accion ocurre
- class _HomePageState extends State<HomePage> {
-
-   Future getData() async {
-     http.Response response = await http.get("http://edfloreshz.somee.com/api/alumnos/63");
-    debugPrint(response.body);
-   }
+class _HomePageState extends State<HomePage> {
 
   @override
-  void initState(){
-    super.initState();
-    getData();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Escuelita"), // Titulo de la barra inicial
+        backgroundColor: Colors.lightBlue,
+      ),
+      body: ListView.builder(
+        itemBuilder: (BuildContext context, int index){
+          return Card(
+            child: Row(
+              children: <Widget>[
+              ],
+            ),
+          );
+        }
+      )
+    );
   }
+}
 
-   @override 
-   Widget build(BuildContext context) {
-     return Scaffold(
-       appBar: AppBar(
-         title: Text("Escuelita"), // Titulo de la barra inicial
-         backgroundColor: Colors.lightBlue,
-       ),
-     );
-   }
- }
+
+
+
+
+
+@JsonSerializable()
+class Alumno {
+  final int id;
+  final String expediente;
+  final String nombre;
+  final int grupo;
+  final bool activo;
+
+  Alumno({this.id, this.expediente, this.nombre, this.grupo, this.activo});
+
+  factory Alumno.fromJson(Map<String, dynamic> json) {
+    return Alumno(
+        id: json['id'] as int,
+        expediente: json['expediente'] as String,
+        nombre: json['nombre'] as String,
+        grupo: json['grupo'] as int,
+        activo: json['activo'] as bool);
+  }
+}

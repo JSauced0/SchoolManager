@@ -29,9 +29,9 @@ namespace WebApp.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Grados>>> GetGrado(int id)
+        public async Task<ActionResult<Grados>> GetGrado(int id)
         {
-            return await grados.Where(a => a.Id == id).ToListAsync();
+            return await grados.FirstOrDefaultAsync(a => a.Id == id);
         }
 
         // POST api/values

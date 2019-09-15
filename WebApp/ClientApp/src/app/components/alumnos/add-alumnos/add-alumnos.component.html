@@ -18,7 +18,7 @@
         <div class="form-group">
             <input type="text" name="activo"  [(ngModel)]="alumno.activo" placeholder="Activo" class="form-control">
         </div>
-        <button class="btn btn-success btn-block" (click)="saveAlumno()">
+        <button class="btn btn-success btn-block" (click)="edit ? putAlumno() : saveAlumno()">
           Guardar
         </button>
       </form>
@@ -33,13 +33,13 @@
       </div>
       <div class="card-body">
         <div>
-            <label>Expediente: </label>{{alumno.expediente}}
+            <label>Expediente: </label> {{alumno.expediente}}
         </div>
         <div>
-            <label>Grupo: </label>{{alumno.grupo}}
+            <label>Grupo: </label> {{alumno.grupoNavigation.nombre}}
         </div>
         <div>
-            <label>Activo: </label>{{alumno.activo}}
+            <label>Activo: </label> {{alumno.activo}}
         </div>
       </div>
   

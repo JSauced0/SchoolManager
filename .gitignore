@@ -63,3 +63,9 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+MobileApp/school_manager_app/ios/Runner/GeneratedPluginRegistrant.m
+MobileApp/school_manager_app/ios/Runner/GeneratedPluginRegistrant.h
+MobileApp/school_manager_app/ios/Flutter/Generated.xcconfig
+MobileApp/school_manager_app/ios/Flutter/flutter_export_environment.sh
+MobileApp/school_manager_app/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+MobileApp/school_manager_app/.packages

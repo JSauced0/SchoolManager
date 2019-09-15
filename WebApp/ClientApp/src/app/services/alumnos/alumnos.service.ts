@@ -21,7 +21,7 @@ export class AlumnosService {
     return this.http.post(`${this.apiUrl}/alumnos/`, alumno);
   }
 
-  updateAlumno(id, updateAlumno){
+  updateAlumno(id: number, updateAlumno: Alumno){
     return this.http.put(`${this.apiUrl}/alumnos/${id}`, updateAlumno);
   }
 }

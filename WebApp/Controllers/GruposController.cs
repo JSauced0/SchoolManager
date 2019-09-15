@@ -31,9 +31,9 @@ namespace WebApp.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Grupos>>> GetGrupo(int id)
+        public async Task<ActionResult<Grupos>> GetGrupo(int id)
         {
-            return await grupos.Where(a => a.Id == id).ToListAsync();
+            return await grupos.FirstOrDefaultAsync(a => a.Id == id);
         }
 
         // POST api/values

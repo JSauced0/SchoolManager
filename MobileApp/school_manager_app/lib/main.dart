@@ -3,9 +3,10 @@ import 'package:http/http.dart' as http; // Para manejar Peticiones HTTP
 import 'dart:async'; // ASYNC AWAIT DART
 import 'dart:convert'; // to conver http response into a JSON.
 import 'dart:core'; // SOMETHING
-import 'alumnos.dart'; // Alumnos del APi
+//import 'alumnos.dart'; // Alumnos del APi
 import 'package:json_annotation/json_annotation.dart';
-part 'Alumno.g.dart';  // IDK BUT I HOPE THIS WILL WORK 
+
+// part 'Alumno.g.dart';  // IDK BUT I HOPE THIS WILL WORK
 // Metodo Principal que manda a llamar a Stateful Widget
 void main() {
   runApp(MaterialApp(
@@ -19,41 +20,51 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-Future getData(){
-   Future<List<Alumno>> o = obtenerAlumno.getAlumno();
-  debugPrint(o.toString());
-}
-void initState(){
-  getData();
-}
 // Aqui es donde la accion ocurre
 class _HomePageState extends State<HomePage> {
+  Map data;
+  List userData;
+  Future getData() async {
+    http.Response response =
+        await http.get("http://edfloreshz.somee.com/api/alumnos");
+    data = json.decode(response.body);
+    setState(() {
+     userData = data["alumnos"]; 
+    });
+    debugPrint(userData.toString());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Escuelita"), // Titulo de la barra inicial
-        backgroundColor: Colors.lightBlue,
-      ),
-      body: ListView.builder(
-        itemBuilder: (BuildContext context, int index){
+        appBar: AppBar(
+          title: Text("Escuelita"), // Titulo de la barra inicial
+          backgroundColor: Colors.lightBlue,
+        ),
+        body: ListView.builder(
+          itemCount: userData == null ? 0 : userData.length,
+          itemBuilder: (BuildContext context, int index) {
           return Card(
             child: Row(
               children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text("${userData[index]["id"]} ${userData[index]["nombre"]} ${userData[index]["grupo"]}")
+                ),          
               ],
             ),
           );
-        }
-      )
-    );
+        }));
   }
 }
 
-
-
-
-
+/*
 
 @JsonSerializable()
 class Alumno {
@@ -74,3 +85,4 @@ class Alumno {
         activo: json['activo'] as bool);
   }
 }
+*/

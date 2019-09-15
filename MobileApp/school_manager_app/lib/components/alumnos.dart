@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:school_manager_app/components/grupos.dart';
+import 'package:school_manager_app/components/maestros.dart';
+import 'package:school_manager_app/main.dart';
 
-import '../main.dart';
 import '../widgets/CustomListTitle.dart';
-import 'grupos.dart';
-import 'maestros.dart';
 import '../services/alumnos.service.dart';
 
 class Alumnos extends StatefulWidget {
@@ -25,7 +25,9 @@ class _Alumnos extends State<Alumnos> {
   void initState(){
     super.initState();
     data = _alumnosService.getUsers();
-    usersData = data[0];
+    setState(() {
+      usersData = data['alumnos'];
+    });
   }
 
   @override

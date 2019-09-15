@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:school_manager_app/components/alumnos.dart';
+import 'package:school_manager_app/components/grupos.dart';
+import 'package:school_manager_app/main.dart';
+import 'package:school_manager_app/widgets/CustomListTitle.dart';
 
-import '../widgets/CustomListTitle.dart';
-import '../main.dart';
-import 'alumnos.dart';
-import 'grupos.dart';
+
 
 class Maestros extends StatelessWidget {
  

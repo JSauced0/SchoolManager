@@ -2,7 +2,7 @@ import { AlumnosService } from '../../../services/alumnos/alumnos.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Alumno } from 'src/app/models/alumnos';
 import { GruposService } from 'src/app/services/grupos/grupos.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-alumnos',
@@ -10,19 +10,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-alumnos.component.css']
 })
 export class AddAlumnosComponent implements OnInit {
-@HostBinding('class') classes = 'row';
+@HostBinding('class') classes = row';
 
-  alumno: Alumno = {
+   alumno: Alumno = {
     nombre: '',
     expediente: '',
     grupo: 0,
     activo: true
   };
   grupos: any = []
+  
 
-  constructor(private alumnoService: AlumnosService,  private gruposService: GruposService, private router: Router ) { }
+  constructor(private alumnoService: AlumnosService,  private gruposService: GruposService, private router: Router, private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit() {
+    const params = this.activatedRoute.snapshot.params;
+    console.log(params);
+
+    if(params.id){
+      this.alumnoService.getAlumno(params.id)
+      .subscribe(
+        res =>{
+          console.log(res)
+          this.alumno = res;
+        },
+        err => console.error(err)
+      )
+      
+    }
     this.gruposService.getGrupos().subscribe(
       res => {
         console.log(res);
@@ -30,6 +45,8 @@ export class AddAlumnosComponent implements OnInit {
       },
       err=>console.error(err)
     );
+
+   
   }
   
   saveAlumno(){

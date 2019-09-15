@@ -45,7 +45,7 @@ export class AddAlumnosComponent implements OnInit {
     }
     this.gruposService.getGrupos().subscribe(
       res => {
-        this.grupos = res;
+        this.grupos = res['grupos'];
       },
       err => console.error(err)
     );

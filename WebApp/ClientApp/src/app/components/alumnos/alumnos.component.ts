@@ -15,7 +15,7 @@ export class AlumnosComponent implements OnInit {
   ngOnInit() {
     this.alumnosService.getAlumnos().subscribe(
       res => {
-        this.alumnos = res;
+        this.alumnos = res['alumnos'];
       },
       err=>{
         console.error(err)

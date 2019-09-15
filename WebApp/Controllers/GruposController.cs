@@ -26,7 +26,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Grupos>>> GetGrupos()
         {
-            return await grupos.ToListAsync();
+            return Ok(new { grupos = await grupos.ToListAsync()});
         }
 
         // GET api/values/5

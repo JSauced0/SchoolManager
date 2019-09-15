@@ -15,7 +15,7 @@ export class MaestrosComponent implements OnInit {
   ngOnInit() {
     this.maestrosService.getMaestros().subscribe(
       res => {
-        this.maestros = res;
+        this.maestros = res['maestros'];
       },
       err=>{
         console.error(err)

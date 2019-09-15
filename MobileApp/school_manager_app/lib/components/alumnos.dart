@@ -15,7 +15,7 @@ class _Alumnos extends State<Alumnos> {
   
   AlumnosService _alumnosService;
   Map data;
-  List usersData;
+  List alumnosData;
 
   _Alumnos(AlumnosService alumnosService){
     _alumnosService = alumnosService;
@@ -24,9 +24,9 @@ class _Alumnos extends State<Alumnos> {
   @override
   void initState(){
     super.initState();
-    data = _alumnosService.getUsers();
+    data = _alumnosService.getAlumnos();
     setState(() {
-      usersData = data['alumnos'];
+      alumnosData = data['alumnos'];
     });
   }
 
@@ -90,12 +90,12 @@ class _Alumnos extends State<Alumnos> {
       ),
       
       body: ListView.builder(
-        itemCount: usersData == null ? 0 : usersData.length,
-        itemBuilder: (BuildContext context, int index){
+        itemCount: alumnosData == null ? 0 : alumnosData.length,
+        itemBuilder: (BuildContext context, int i){
           return Card(
             child: Row(
               children: <Widget>[
-                Text("${usersData[index]["nombre"]}")
+                Text("${alumnosData[i]["nombre"]}")
               ],
             ),
           );

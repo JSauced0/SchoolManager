@@ -22,6 +22,15 @@ class HomePage extends StatefulWidget {
 
 // Aqui es donde la accion ocurre
 class _HomePageState extends State<HomePage> {
+  
+   int _selectedIndex = 0;
+
+  void _onItemTap(int value) {
+    setState(() {
+      _selectedIndex = value;
+    });
+  }
+
   Map data;
   List userData;
   Future getData() async {
@@ -47,6 +56,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         appBar: AppBar(
           title: Text("Escuelita"), // Titulo de la barra inicial
@@ -65,7 +75,33 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           );
-        }));
+        }),
+        
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.developer_mode),
+            title: Text('Mestros'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            title: Text('Alumnos'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            title: Text('Materias'),
+          ),
+        ],
+        onTap: (index){
+            _incrementTab(index);
+        }
+      ),body: [
+        Alumnos(),
+        Maestros(),
+        Materias(),
+      ].elementAt(_selectedIndex),
+
+        );
   }
 }
 

@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class AlumnosService {
-  apiUrl= 'http://localhost:5000/api';
+  apiUrl= 'http://edfloreshz.somee.com/api';
   constructor(private http: HttpClient) { }
  
   getAlumnos(){

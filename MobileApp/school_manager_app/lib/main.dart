@@ -34,11 +34,16 @@ class _HomePageState extends State<HomePage> {
     debugPrint(userData.toString());
   }
 
+
+
   @override
   void initState() {
     super.initState();
     getData();
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(15),
-                  child: Text("${userData[index]["id"]} ${userData[index]["nombre"]} ${userData[index]["grupo"]}")
+                  child: Text("id "+"${userData[index]["id"]}"+"\n"+"Nombre: "+" ${userData[index]["nombre"]}"+"\n"+"Grupo: "+"${userData[index]["grupo"]}")
                 ),          
               ],
             ),

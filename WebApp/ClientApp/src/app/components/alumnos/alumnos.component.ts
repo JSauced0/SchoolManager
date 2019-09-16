@@ -23,5 +23,9 @@ export class AlumnosComponent implements OnInit {
     );
   }
 
+  desactivarAlumno(id: string){
+    this.alumnosService.
+  }
+
  
 }

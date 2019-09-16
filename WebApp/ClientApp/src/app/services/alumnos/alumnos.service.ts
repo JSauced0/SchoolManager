@@ -24,4 +24,6 @@ export class AlumnosService {
   updateAlumno(id: number, updateAlumno: Alumno){
     return this.http.put(`${this.apiUrl}/alumnos/${id}`, updateAlumno);
   }
+
+  
 }

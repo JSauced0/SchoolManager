@@ -1,45 +1,34 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:school_manager_app/components/edit-alumno.dart';
+import 'package:school_manager_app/components/alumnos.dart';
 import 'package:school_manager_app/components/grupos.dart';
 import 'package:school_manager_app/components/maestros.dart';
 import 'package:school_manager_app/main.dart';
 
 import '../widgets/CustomListTitle.dart';
 
-class Alumnos extends StatefulWidget {
+class EditAlumno extends StatefulWidget {
+  List alumnosData;
+
+  EditAlumno(List alumnosData) {
+    this.alumnosData = alumnosData;
+  }
+
   @override
-  _Alumnos createState() => _Alumnos();
+  _EditAlumno createState() => _EditAlumno(alumnosData);
 }
 
-class _Alumnos extends State<Alumnos> {
-  List alumnosData, alumnosEdit;
+class _EditAlumno extends State<EditAlumno> {
+  List alumnosData;
   Map data;
   String apiURL = 'http://edfloreshz.somee.com/api/alumnos';
 
-  getAlumnos() async {
-    http.Response res = await http.get(apiURL);
-    print(res.body);
-    data = json.decode(res.body);
-    setState(() {
-      alumnosData = data['alumnos'];
-    });
-  }
-
-  getAlumno(int id) async {
-    http.Response res = await http.get("$apiURL/$id");
-    data = json.decode(res.body);
-    setState(() {
-      alumnosEdit = data['alumnos'];
-    });
+  _EditAlumno(List alumnosData) {
+    this.alumnosData = alumnosData;
   }
 
   @override
   void initState() {
     super.initState();
-    getAlumnos();
   }
 
   @override
@@ -111,47 +100,9 @@ class _Alumnos extends State<Alumnos> {
                           style: TextStyle(
                               fontSize: 11.0, fontWeight: FontWeight.w500),
                         )),
-                    Expanded(
-                      child: Align(
-                          alignment: Alignment.topRight,
-                          child: ButtonBar(
-                            children: <Widget>[
-                              ButtonTheme(
-                                minWidth: 20.0,
-                                height: 30.0,
-                                child: RaisedButton(
-                                  onPressed: () {
-                                    getAlumno(alumnosData[i]["id"]);
-                                    Navigator.push(
-                                        context,
-                                        new MaterialPageRoute(
-                                            builder: (context) =>
-                                                EditAlumno(alumnosEdit)));
-                                  },
-                                  child: Text(
-                                    "Edit",
-                                    style: TextStyle(fontSize: 10.0),
-                                  ),
-                                ),
-                              ),
-                              ButtonTheme(
-                                minWidth: 20.0,
-                                height: 30.0,
-                                child: RaisedButton(
-                                  onPressed: () => [],
-                                  child: Text(
-                                    "Delete",
-                                    style: TextStyle(fontSize: 10.0),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                    )
                   ],
                 ),
               ));
             }));
   }
 }
-

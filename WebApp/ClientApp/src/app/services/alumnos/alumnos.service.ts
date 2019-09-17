@@ -13,7 +13,7 @@ export class AlumnosService {
     return this.http.get(`${this.apiUrl}/alumnos`);
   }
 
-  getAlumno(id: string){
+  getAlumno(id: number){
     return this.http.get(`${this.apiUrl}/alumnos/${id}`);
   }
 
@@ -25,5 +25,11 @@ export class AlumnosService {
     return this.http.put(`${this.apiUrl}/alumnos/${id}`, updateAlumno);
   }
 
-  
+  deactivateAlumno(id: number){
+    return this.http.post(`${this.apiUrl}/alumnos/deactivate/${id}`, this.getAlumno(id));
+  }
+
+  activateAlumno(id: number){
+    return this.http.post(`${this.apiUrl}/alumnos/activate/${id}`, this.getAlumno(id));
+  }
 }

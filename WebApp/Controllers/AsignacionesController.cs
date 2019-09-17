@@ -32,9 +32,9 @@ namespace WebApp.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Asignaciones>> GetAsignacion(int id)
+        public async Task<ActionResult<List<Asignaciones>>> GetAsignacion(int id)
         {
-            return Ok( new { asignaciones = await asignaciones.FirstOrDefaultAsync(a => a.Id == id)});
+            return Ok( new { asignaciones = await asignaciones.Where(a => a.Id == id).ToListAsync()});
         }
 
         // POST api/values

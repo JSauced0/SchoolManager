@@ -30,9 +30,9 @@ namespace WebApp.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Alumnos>> GetAlumno(int id)
+        public async Task<ActionResult<List<Alumnos>>> GetAlumno(int id)
         {
-            return Ok( new { alumnos = await alumnos.FirstOrDefaultAsync(a => a.Id == id) });
+            return Ok( new { alumnos = await alumnos.Where(a => a.Id == id).ToListAsync() });
         }
 
         // POST api/values

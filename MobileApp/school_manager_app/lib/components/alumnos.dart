@@ -15,7 +15,7 @@ class Alumnos extends StatefulWidget {
 }
 
 class _Alumnos extends State<Alumnos> {
-  List alumnosData, alumnosEdit;
+  List alumnosData;
   Map data;
   String apiURL = 'http://edfloreshz.somee.com/api/alumnos';
 
@@ -28,23 +28,12 @@ class _Alumnos extends State<Alumnos> {
     });
   }
 
-  getAlumno(int id) async {
-    http.Response res = await http.get("$apiURL/$id");
-    data = json.decode(res.body);
-    print(res.body);
-    setState(() {
-      alumnosEdit = data['alumnos'];
-    });
-  }
-
   deactivateAlumno(int id) async {
-    http.Response res = await http.post("$apiURL/deactivate/$id");
-    setState(() {});
+    return await http.post("$apiURL/deactivate/$id");
   }
 
   activateAlumno(int id) async {
-    http.Response res = await http.post("$apiURL/activate/$id");
-    setState(() {});
+    return await http.post("$apiURL/activate/$id");
   }
 
   @override
@@ -66,12 +55,12 @@ class _Alumnos extends State<Alumnos> {
     );
   }
 
-  Widget buildStateButton(int i) {
+  Widget buildActiveStateButton(int i) {
     if (alumnosData[i]["activo"]) {
       return RaisedButton(
         onPressed: () {
           Navigator.push(
-            context, new MaterialPageRoute(builder: (context) => Alumnos()));
+              context, new MaterialPageRoute(builder: (context) => Alumnos()));
           deactivateAlumno(alumnosData[i]["id"]);
         },
         color: Colors.orange,
@@ -98,103 +87,113 @@ class _Alumnos extends State<Alumnos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Alumnos'),
-        ),
-        drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              DrawerHeader(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: <Color>[Colors.orange, Colors.orangeAccent])),
-                child: Container(
-                  child: Column(
-                    children: <Widget>[
-                      Material(
-                          borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                          elevation: 10,
-                          child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Image.asset('lib/img/school.png',
-                                width: 80, height: 80),
-                          )),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Escuela',
-                          style: TextStyle(color: Colors.white, fontSize: 20.0),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              CustomListTitle(Icons.home, "Inicio", () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => MyApp()));
-              }),
-              CustomListTitle(Icons.person, 'Alumnos', () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => Alumnos()));
-              }),
-              CustomListTitle(Icons.people, 'Maestros', () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => Maestros()));
-              }),
-              CustomListTitle(Icons.school, 'Grupos', () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => Grupos()));
-              }),
-            ],
-          ),
-        ),
-        body: ListView.builder(
-            itemCount: alumnosData == null ? 0 : alumnosData.length,
-            itemBuilder: (BuildContext context, int i) {
-              return Card(
-                  child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(
+      appBar: AppBar(
+        title: Text('Alumnos'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: <Color>[Colors.orange, Colors.orangeAccent])),
+              child: Container(
+                child: Column(
                   children: <Widget>[
+                    Material(
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        elevation: 10,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Image.asset('lib/img/school.png',
+                              width: 80, height: 80),
+                        )),
                     Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: buildAlumnoDescription(i)),
-                    Expanded(
-                      child: Align(
-                          alignment: Alignment.topRight,
-                          child: ButtonBar(
-                            children: <Widget>[
-                              ButtonTheme(
-                                minWidth: 20.0,
-                                height: 30.0,
-                                child: RaisedButton(
-                                  onPressed: () {
-                                    getAlumno(alumnosData[i]["id"]);
-                                    Navigator.push(
-                                        context,
-                                        new MaterialPageRoute(
-                                            builder: (context) =>
-                                                EditAlumno(alumnosEdit)));
-                                  },
-                                  color: Colors.blue,
-                                  child: Text(
-                                    "Editar",
-                                    style: TextStyle(
-                                        fontSize: 13.0, color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              ButtonTheme(
-                                  minWidth: 20.0,
-                                  height: 30.0,
-                                  child: buildStateButton(i)),
-                            ],
-                          )),
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'Escuela',
+                        style: TextStyle(color: Colors.white, fontSize: 20.0),
+                      ),
                     )
                   ],
                 ),
-              ));
-            }));
+              ),
+            ),
+            CustomListTitle(Icons.home, "Inicio", () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => MyApp()));
+            }),
+            CustomListTitle(Icons.person, 'Alumnos', () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Alumnos()));
+            }),
+            CustomListTitle(Icons.people, 'Maestros', () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Maestros()));
+            }),
+            CustomListTitle(Icons.school, 'Grupos', () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Grupos()));
+            }),
+          ],
+        ),
+      ),
+      body: ListView.builder(
+          itemCount: alumnosData == null ? 0 : alumnosData.length,
+          itemBuilder: (BuildContext context, int i) {
+            return Card(
+                child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: buildAlumnoDescription(i)),
+                  Expanded(
+                    child: Align(
+                        alignment: Alignment.topRight,
+                        child: ButtonBar(
+                          children: <Widget>[
+                            ButtonTheme(
+                              minWidth: 20.0,
+                              height: 30.0,
+                              child: RaisedButton(
+                                onPressed: () {
+                                  // getAlumno(alumnosData[i]["id"]);
+                                  Navigator.push(
+                                      context,
+                                      new MaterialPageRoute(
+                                          builder: (context) =>
+                                              EditAlumno(alumnosData[i]["id"])));
+                                },
+                                color: Colors.blue,
+                                child: Text(
+                                  "Editar",
+                                  style: TextStyle(
+                                      fontSize: 13.0, color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            ButtonTheme(
+                                minWidth: 20.0,
+                                height: 30.0,
+                                child: buildActiveStateButton(i)),
+                          ],
+                        )),
+                  )
+                ],
+              ),
+            ));
+          }),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+              context,
+              new MaterialPageRoute(
+                  builder: (context) => EditAlumno(null)));
+        },
+      ),
+    );
   }
 }

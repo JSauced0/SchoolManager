@@ -66,7 +66,7 @@ class _Alumnos extends State<Alumnos> {
         color: Colors.orange,
         child: Text(
           "Desactivar",
-          style: TextStyle(fontSize: 13.0),
+          style: TextStyle( fontSize: 13.0, color: Colors.white),
         ),
       );
     }
@@ -186,7 +186,7 @@ class _Alumnos extends State<Alumnos> {
             ));
           }),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.white,),
         onPressed: () {
           Navigator.push(
               context,

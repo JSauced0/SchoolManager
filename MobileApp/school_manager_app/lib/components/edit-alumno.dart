@@ -55,20 +55,33 @@ class _EditAlumno extends State<EditAlumno> {
                   padding: const EdgeInsets.all(12.0),
                   child: Form(
                     key: _editAlumno,
+                    autovalidate: true,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         TextFormField(
+                          decoration: const InputDecoration(
+                              icon: const Icon(Icons.person),
+                              hintText: "Ingresa el nombre"),
                           initialValue: "${alumnosData[i]["nombre"]}",
                         ),
                         TextFormField(
+                          decoration: const InputDecoration(
+                              icon: const Icon(Icons.card_membership),
+                              hintText: "Ingresa el expediente"),
                           initialValue: "${alumnosData[i]["expediente"]}",
                         ),
                         TextFormField(
+                          decoration: const InputDecoration(
+                              icon: const Icon(Icons.group),
+                              hintText: "Ingresa el grupo"),
                           initialValue:
                               "${alumnosData[i]["grupoNavigation"]["nombre"]}",
                         ),
                         TextFormField(
+                          decoration: const InputDecoration(
+                              icon: const Icon(Icons.notifications_active),
+                              hintText: "Activo/Inactivo"),
                           initialValue: "${alumnosData[i]["activo"]}",
                         ),
                         Padding(
@@ -83,7 +96,11 @@ class _EditAlumno extends State<EditAlumno> {
                                     SnackBar(content: Text('Processing Data')));
                               }
                             },
-                            child: Text('Guardar'),
+                            color: Colors.green,
+                            child: Align(
+                                alignment: Alignment.center,
+                                child: Text('Guardar', style: TextStyle(
+                                      fontSize: 17.0, color: Colors.white),)),
                           ),
                         ),
                       ],
@@ -105,11 +122,25 @@ class _EditAlumno extends State<EditAlumno> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 TextFormField(
-                  controller: TextEditingController(text: "Nombre"),
+                  decoration: const InputDecoration(
+                              icon: const Icon(Icons.person),
+                              hintText: "Ingresa el nombre"),
                 ),
-                TextFormField(),
-                TextFormField(),
-                TextFormField(),
+                TextFormField(
+                   decoration: const InputDecoration(
+                              icon: const Icon(Icons.card_membership),
+                              hintText: "Ingresa el expediente"),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                              icon: const Icon(Icons.group),
+                              hintText: "Ingresa el grupo"),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                              icon: const Icon(Icons.notifications_active),
+                              hintText: "Activo/Inactivo"),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: RaisedButton(
@@ -122,7 +153,11 @@ class _EditAlumno extends State<EditAlumno> {
                             SnackBar(content: Text('Processing Data')));
                       }
                     },
-                    child: Text('Guardar'),
+                    color: Colors.green,
+                    child: Align(
+                                alignment: Alignment.center,
+                                child: Text('Guardar', style: TextStyle(
+                                      fontSize: 17.0, color: Colors.white),)),
                   ),
                 ),
               ],
@@ -130,6 +165,7 @@ class _EditAlumno extends State<EditAlumno> {
           ),
         )));
   }
+
 
   @override
   Widget build(BuildContext context) {

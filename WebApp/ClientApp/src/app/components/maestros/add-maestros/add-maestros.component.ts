@@ -28,7 +28,7 @@ export class AddMaestrosComponent implements OnInit {
     this.gruposService.getGrupos().subscribe(
       res => {
         console.log(res);
-        this.grupos = res;
+        this.grupos = res['grupos'];
       },
       err=>console.error(err)
     );

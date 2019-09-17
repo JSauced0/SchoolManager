@@ -37,7 +37,7 @@ export class AddAlumnosComponent implements OnInit {
       this.alumnoService.getAlumno(params.id)
         .subscribe(
           res => {
-            this.alumno = <any>res;
+            this.alumno = res['alumnos'];
             this.edit = true
           },
           err => console.error(err)

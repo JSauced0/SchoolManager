@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http; // Para manejar Peticiones HTTP
 import 'dart:async';
 import 'dart:convert'; // to conver http response into a JSON.
@@ -6,32 +7,56 @@ import 'main.dart';
 
 // DATOS QUE SE USARAN EN UNA CLASE EXTERNA PARA PARSEAR UN JSON ARRAY
 
-class obtenerAlumno {
-  static const String url = "http://edfloreshz.somee.com/api/alumnos";
-  
-  static Future<List<Alumno>> getAlumno() async {
-    try {
-       final response = await http.get(url);
-         List<Alumno> mandarAlumnos(String responseBody) {
-        final parsed = json.decode(response.body).cast<Map<String, dynamic>>();
-        return parsed.map<Alumno>((json) => Alumno.fromJson(json)).toList();
-      }
-      if (response.statusCode == 200) {
-        List<Alumno> list = mandarAlumnos(response.body);
-        return list;
-      }
-    } catch (e) {
-      throw Exception(e.toString());
-    }
-   
+class AlumnosList extends StatefulWidget{
+@override
+  _AlumnoRender createState() => _AlumnoRender();
+}
+
+class _AlumnoRender extends State<AlumnosList>{
+
+  Map data;
+  List userData;
+  Future getData() async {
+    http.Response response =
+        await http.get("http://edfloreshz.somee.com/api/alumnos");
+    data = json.decode(response.body);
+     userData = data["alumnos"]; 
+     debugPrint(userData.toString());
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    getData();
+  }
+
+    @override
+ Widget build(BuildContext context) {
+    
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Alumnos"), // Titulo de la barra inicial
+          backgroundColor: Colors.lightBlue,
+        ),
+        body: ListView.builder(
+          itemCount: userData == null ? 0 : userData.length,
+          itemBuilder: (BuildContext context, int index) {
+          return Card(
+            child: Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text("id "+"${userData[index]["id"]}"+"\n"+"Nombre: "+" ${userData[index]["nombre"]}"+"\n"+"Grupo: "+"${userData[index]["grupo"]}")
+                ),          
+              ],
+            ),
+          );
+        }),
+        
+
+        );
   }
 }
-/*
-  Future getData() async {
-      http.Response response = await http.get("http://edfloreshz.somee.com/api/alumnos");
-     a = response;
-     debugPrint(mandarAlumnos.toString());
   
-  }
-*/
+
 

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
+import 'package:school_manager_app/models/alumnos.dart';
 
 class EditAlumno extends StatefulWidget {
   int id;
@@ -19,6 +20,7 @@ class _EditAlumno extends State<EditAlumno> {
   String apiURL = 'http://edfloreshz.somee.com/api/alumnos';
   int id;
   final _editAlumno = GlobalKey<FormState>();
+  Alumno currentAlumno = new Alumno();
 
   _EditAlumno(int id) {
     this.id = id;
@@ -31,6 +33,12 @@ class _EditAlumno extends State<EditAlumno> {
     setState(() {
       alumnosData = data['alumnos'];
     });
+  }
+
+  saveAlumno(Alumno currentAlumno, int id) async {
+    print(currentAlumno.nombre);
+    http.Response res = await http.post("$apiURL/$id", body: currentAlumno);
+    print(res.body);
   }
 
   @override
@@ -64,12 +72,14 @@ class _EditAlumno extends State<EditAlumno> {
                               icon: const Icon(Icons.person),
                               hintText: "Ingresa el nombre"),
                           initialValue: "${alumnosData[i]["nombre"]}",
+                          onSaved: (val) => currentAlumno.nombre = val,
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
                               icon: const Icon(Icons.card_membership),
                               hintText: "Ingresa el expediente"),
                           initialValue: "${alumnosData[i]["expediente"]}",
+                          onSaved: (val) => currentAlumno.expediente = val,
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
@@ -77,12 +87,14 @@ class _EditAlumno extends State<EditAlumno> {
                               hintText: "Ingresa el grupo"),
                           initialValue:
                               "${alumnosData[i]["grupoNavigation"]["nombre"]}",
+                              // onSaved:  (val) => currentAlumno.nombre = val,
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
                               icon: const Icon(Icons.notifications_active),
                               hintText: "Activo/Inactivo"),
                           initialValue: "${alumnosData[i]["activo"]}",
+                          // onSaved:  (val) => currentAlumno.activo = val,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -93,7 +105,8 @@ class _EditAlumno extends State<EditAlumno> {
                               if (_editAlumno.currentState.validate()) {
                                 // If the form is valid, display a Snackbar.
                                 Scaffold.of(context).showSnackBar(
-                                    SnackBar(content: Text('Processing Data')));
+                                    SnackBar(content: Text('Guardando...')));
+                                saveAlumno(currentAlumno,alumnosData[i]["id"]);
                               }
                             },
                             color: Colors.green,

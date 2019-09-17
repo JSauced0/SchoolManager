@@ -31,15 +31,68 @@ class _Alumnos extends State<Alumnos> {
   getAlumno(int id) async {
     http.Response res = await http.get("$apiURL/$id");
     data = json.decode(res.body);
+    print(res.body);
     setState(() {
       alumnosEdit = data['alumnos'];
     });
+  }
+
+  deactivateAlumno(int id) async {
+    http.Response res = await http.post("$apiURL/deactivate/$id");
+    setState(() {});
+  }
+
+  activateAlumno(int id) async {
+    http.Response res = await http.post("$apiURL/activate/$id");
+    setState(() {});
   }
 
   @override
   void initState() {
     super.initState();
     getAlumnos();
+  }
+
+  Widget buildAlumnoDescription(int i) {
+    if (alumnosData[i]["activo"]) {
+      return Text(
+        " ${alumnosData[i]["nombre"]} \n ${alumnosData[i]["expediente"]} \n ${alumnosData[i]["grupoNavigation"]["nombre"]} \n Activo",
+        style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w500),
+      );
+    }
+    return Text(
+      " ${alumnosData[i]["nombre"]} \n ${alumnosData[i]["expediente"]} \n ${alumnosData[i]["grupoNavigation"]["nombre"]} \n Inactivo",
+      style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w500),
+    );
+  }
+
+  Widget buildStateButton(int i) {
+    if (alumnosData[i]["activo"]) {
+      return RaisedButton(
+        onPressed: () {
+          Navigator.push(
+            context, new MaterialPageRoute(builder: (context) => Alumnos()));
+          deactivateAlumno(alumnosData[i]["id"]);
+        },
+        color: Colors.orange,
+        child: Text(
+          "Desactivar",
+          style: TextStyle(fontSize: 13.0),
+        ),
+      );
+    }
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(
+            context, new MaterialPageRoute(builder: (context) => Alumnos()));
+        activateAlumno(alumnosData[i]["id"]);
+      },
+      color: Colors.green,
+      child: Text(
+        "Activar",
+        style: TextStyle(fontSize: 13.0),
+      ),
+    );
   }
 
   @override
@@ -106,11 +159,7 @@ class _Alumnos extends State<Alumnos> {
                   children: <Widget>[
                     Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: Text(
-                          "${alumnosData[i]["nombre"]}",
-                          style: TextStyle(
-                              fontSize: 11.0, fontWeight: FontWeight.w500),
-                        )),
+                        child: buildAlumnoDescription(i)),
                     Expanded(
                       child: Align(
                           alignment: Alignment.topRight,
@@ -128,23 +177,18 @@ class _Alumnos extends State<Alumnos> {
                                             builder: (context) =>
                                                 EditAlumno(alumnosEdit)));
                                   },
+                                  color: Colors.blue,
                                   child: Text(
-                                    "Edit",
-                                    style: TextStyle(fontSize: 10.0),
+                                    "Editar",
+                                    style: TextStyle(
+                                        fontSize: 13.0, color: Colors.white),
                                   ),
                                 ),
                               ),
                               ButtonTheme(
-                                minWidth: 20.0,
-                                height: 30.0,
-                                child: RaisedButton(
-                                  onPressed: () => [],
-                                  child: Text(
-                                    "Delete",
-                                    style: TextStyle(fontSize: 10.0),
-                                  ),
-                                ),
-                              ),
+                                  minWidth: 20.0,
+                                  height: 30.0,
+                                  child: buildStateButton(i)),
                             ],
                           )),
                     )
@@ -154,4 +198,3 @@ class _Alumnos extends State<Alumnos> {
             }));
   }
 }
-

@@ -33,7 +33,7 @@ namespace WebApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Grupos>> GetGrupo(int id)
         {
-            return await grupos.FirstOrDefaultAsync(a => a.Id == id);
+            return Ok( new { grupos = await grupos.FirstOrDefaultAsync(a => a.Id == id)});
         }
 
         // POST api/values

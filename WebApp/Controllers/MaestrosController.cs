@@ -31,7 +31,7 @@ namespace WebApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Maestros>> GetMaestro(int id)
         {
-            return await maestros.FirstOrDefaultAsync(a => a.Id == id);
+            return Ok( new { maestros = await maestros.FirstOrDefaultAsync(a => a.Id == id)});
         }
 
         // POST api/values

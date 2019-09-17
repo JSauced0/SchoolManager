@@ -25,14 +25,14 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Materias>>> GetMaterias()
         {
-            return await materias.ToListAsync();
+            return Ok( new { materias = await materias.ToListAsync()});
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Materias>> GetMateria(int id)
         {
-            return await materias.FirstOrDefaultAsync(a => a.Id == id);
+            return Ok( new { materias = await materias.FirstOrDefaultAsync(a => a.Id == id)});
         }
 
         // POST api/values

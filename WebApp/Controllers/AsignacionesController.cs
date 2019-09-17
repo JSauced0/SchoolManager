@@ -34,7 +34,7 @@ namespace WebApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Asignaciones>> GetAsignacion(int id)
         {
-            return await asignaciones.FirstOrDefaultAsync(a => a.Id == id);
+            return Ok( new { asignaciones = await asignaciones.FirstOrDefaultAsync(a => a.Id == id)});
         }
 
         // POST api/values

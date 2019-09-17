@@ -32,7 +32,7 @@ namespace WebApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Alumnos>> GetAlumno(int id)
         {
-            return await alumnos.FirstOrDefaultAsync(a => a.Id == id);
+            return Ok( new { alumnos = await alumnos.FirstOrDefaultAsync(a => a.Id == id) });
         }
 
         // POST api/values

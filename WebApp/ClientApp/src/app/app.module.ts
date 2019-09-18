@@ -1,4 +1,4 @@
-import { AddAlumnosComponent } from './components/alumnos/add-alumnos/add-alumnos.component';
+import { ManageAlumnosComponent } from './components/alumnos/manage-alumnos/manage-alumnos.component';
 import { AlumnosService } from './services/alumnos/alumnos.service';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { MaestrosComponent } from './components/maestros/maestros.component';
@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { AddMaestrosComponent } from './components/maestros/add-maestros/add-maestros.component';
+import { ManageMaestrosComponent } from './components/maestros/manage-maestros/manage-maestros.component';
 import { MaestrosService } from './services/maestros/maestros.service';
 import { GruposService } from './services/grupos/grupos.service';
 import { AsignacionComponent } from './components/asignacion/asignacion.component';
@@ -26,8 +26,8 @@ import { MateriasComponent } from './components/materias/materias.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    AddAlumnosComponent,
-    AddMaestrosComponent,
+    ManageAlumnosComponent,
+    ManageMaestrosComponent,
     AlumnosComponent,
     AsignacionComponent,
     GruposComponent,
@@ -44,9 +44,9 @@ import { MateriasComponent } from './components/materias/materias.component';
       {path: 'alumnos', component: AlumnosComponent},
       {path: 'maestros', component: MaestrosComponent},
       {path: 'grupos', component: GruposComponent},
-      {path: 'add', component: AddAlumnosComponent},
-      {path: 'add-maestros', component: AddMaestrosComponent},
-      {path: 'alumnos/edit/:id', component: AddAlumnosComponent}
+      {path: 'alumnos/add', component: ManageAlumnosComponent},
+      {path: 'maestros/add', component: ManageMaestrosComponent},
+      {path: 'alumnos/edit/:id', component: ManageAlumnosComponent}
     ])
   ],
   providers: [AlumnosService, MaestrosService, GruposService],

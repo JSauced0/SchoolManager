@@ -5,11 +5,11 @@ import { GruposService } from 'src/app/services/grupos/grupos.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-add-alumnos',
-  templateUrl: './add-alumnos.component.html',
-  styleUrls: ['./add-alumnos.component.css']
+  selector: 'app-manage-alumnos',
+  templateUrl: './manage-alumnos.component.html',
+  styleUrls: ['./manage-alumnos.component.css']
 })
-export class AddAlumnosComponent implements OnInit {
+export class ManageAlumnosComponent implements OnInit {
   @HostBinding('class') classes = 'row';
 
   alumno: Alumno = {

@@ -50,12 +50,20 @@ namespace WebApp.Controllers
             await _context.SaveChangesAsync();
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public async Task DeleteMaestro(int id)
+        [HttpPost("deactivate/{id}")]
+        public async Task DeactivateMaestro(int id)
         {
             var maestro = await _context.Maestros.FirstOrDefaultAsync(a => a.Id == id);
             maestro.Activo = false;
+            _context.Maestros.Update(maestro);
+            await _context.SaveChangesAsync();
+        }
+        
+        [HttpPost("activate/{id}")]
+        public async Task ActivateMaestro(int id)
+        {
+            var maestro = await _context.Maestros.FirstOrDefaultAsync(a => a.Id == id);
+            maestro.Activo = true;
             _context.Maestros.Update(maestro);
             await _context.SaveChangesAsync();
         }

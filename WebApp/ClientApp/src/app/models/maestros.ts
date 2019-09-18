@@ -1,4 +1,5 @@
 export interface Maestro {
+    id: number;
     expediente: string;
     nombre: string;
     apellido: string;

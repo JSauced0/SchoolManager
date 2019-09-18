@@ -13,7 +13,7 @@ export class MaestrosService {
     return this.http.get(`${this.apiUrl}/maestros`);
   }
 
-  getMaestro(id: string){
+  getMaestro(id: number){
     return this.http.get(`${this.apiUrl}/maestros/${id}`);
   }
 
@@ -23,5 +23,13 @@ export class MaestrosService {
 
   updateMaestro(id, updateMaestro){
     return this.http.put(`${this.apiUrl}/maestros/${id}`, updateMaestro);
+  }
+
+  deactivateMaestro(id: number){
+    return this.http.post(`${this.apiUrl}/maestros/deactivate/${id}`, this.getMaestro(id));
+  }
+
+  activateMaestro(id: number){
+    return this.http.post(`${this.apiUrl}/maestros/activate/${id}`, this.getMaestro(id));
   }
 }

@@ -45,8 +45,9 @@ import { MateriasComponent } from './components/materias/materias.component';
       {path: 'maestros', component: MaestrosComponent},
       {path: 'grupos', component: GruposComponent},
       {path: 'alumnos/add', component: ManageAlumnosComponent},
+      {path: 'alumnos/edit/:id', component: ManageAlumnosComponent},
       {path: 'maestros/add', component: ManageMaestrosComponent},
-      {path: 'alumnos/edit/:id', component: ManageAlumnosComponent}
+      {path: 'maestros/edit/:id', component: ManageMaestrosComponent},
     ])
   ],
   providers: [AlumnosService, MaestrosService, GruposService],

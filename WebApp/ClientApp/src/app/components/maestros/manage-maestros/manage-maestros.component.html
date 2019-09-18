@@ -22,7 +22,7 @@
         <div class="form-group">
             <input type="text" name="activo"  [(ngModel)]="maestro.activo" placeholder="Activo" class="form-control">
         </div>
-        <button class="btn btn-success btn-block" (click)="saveMaestro()">
+        <button class="btn btn-success btn-block" (click)="edit ? putMaestro() : saveMaestro()">
           Guardar
         </button>
       </form>

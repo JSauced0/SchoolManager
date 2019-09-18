@@ -22,4 +22,26 @@ export class MaestrosComponent implements OnInit {
       }
     );
   }
+
+  desactivarMaestro(id: number){
+    this.maestrosService.deactivateMaestro(id).subscribe(
+      () => {
+        location.reload();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  activarMaestro(id: number){
+    this.maestrosService.activateMaestro(id).subscribe(
+      () => {
+        location.reload();
+      },
+      err => {
+        console.log(err);
+      }
+      );
+  }
 }

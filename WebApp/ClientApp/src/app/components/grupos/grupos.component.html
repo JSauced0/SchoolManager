@@ -1,3 +1,63 @@
-<p>
-  grupos works!
-</p>
+<div class="container">
+  <h3>Lista de grupos en el sistema</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <label>¿No encuentra el grupo? </label>
+    </div>
+    <div class="col-md-2">
+      <div [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/grupos/add"]'> Registrelo Aquí</a>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
+<div class="col-md-6" *ngFor="let grupo of grupos">
+  <div class="card text-center">
+    <div class="card-header">
+      <b>{{grupo.nombre}}</b>
+    </div>
+    <div class="card-body">
+      <div>
+        <label> <b> Maestro Asignado: </b></label> {{grupo.maestroNavigation.nombre}} {{grupo.maestroNavigation.apellido}}
+      </div>
+      <div>
+        <label><b>Grado:</b></label> {{grupo.gradoNavigation.grado}}
+      </div>
+      <div *ngIf="grupo.activo == true; else elseBlock">
+        <label><b>Activo</b></label>
+      </div>
+      <ng-template #elseBlock><label><b>Inactivo</b></label></ng-template>
+      <div class="row">
+        <div class="col-md-4">
+          <a [routerLink]="['/grupos/edit', grupo.id]" class="btn btn-info btn-block">
+            <i class="material-icons">edit</i>
+            Editar
+          </a>
+        </div>
+        <div class="col-md-4" *ngIf="grupo.activo == true; else elseBlocks">
+          <button class="btn btn-warning btn-block"  (click)="desactivarGrupo(grupo.id)">
+            <i class="material-icons">thumb_down</i>
+            Desactivar
+          </button>
+        </div>
+        <ng-template #elseBlocks>
+            <div class="col-md-4">
+              <button class="btn btn-success btn-block" (click)="activarGrupo(grupo.id)">
+                <i class="material-icons">thumb_up</i>
+                Activar
+              </button>
+            </div>
+         </ng-template>
+         <div class="col-md-4">
+          <a [routerLink]="['/grupos/listaAlumnos', grupo.id]" class="btn btn-secondary btn-block">
+            <i class="material-icons">face</i>
+            Alumnos
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

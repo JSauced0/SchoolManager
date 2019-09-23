@@ -14,7 +14,7 @@ export class GruposService {
     return this.http.get(`${this.apiUrl}/grupos`);
   }
 
-  getGrupo(id: string){
+  getGrupo(id: number){
     return this.http.get(`${this.apiUrl}/grupos/${id}`);
   }
 
@@ -24,5 +24,13 @@ export class GruposService {
 
   updateGrupo(id, updateGrupo){
     return this.http.put(`${this.apiUrl}/grupos/${id}`, updateGrupo);
+  }
+
+  deactivateGrupo(id: number){
+    return this.http.post(`${this.apiUrl}/grupos/deactivate/${id}`, this.getGrupo(id));
+  }
+
+  activateGrupo(id: number){
+    return this.http.post(`${this.apiUrl}/grupos/activate/${id}`, this.getGrupo(id));
   }
 }

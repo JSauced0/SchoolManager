@@ -61,5 +61,23 @@ namespace WebApp.Controllers
             _context.Grupos.Update(grupo);
             await _context.SaveChangesAsync();
         }
+
+        [HttpPost("deactivate/{id}")]
+        public async Task DeactivateGrupo(int id)
+        {
+            var grupo = await _context.Grupos.FirstOrDefaultAsync(a => a.Id == id);
+            grupo.Activo = false;
+            _context.Grupos.Update(grupo);
+            await _context.SaveChangesAsync();
+        }
+        
+        [HttpPost("activate/{id}")]
+        public async Task ActivateGrupo(int id)
+        {
+            var grupo = await _context.Grupos.FirstOrDefaultAsync(a => a.Id == id);
+            grupo.Activo = true;
+            _context.Grupos.Update(grupo);
+            await _context.SaveChangesAsync();
+        }
     }
 }

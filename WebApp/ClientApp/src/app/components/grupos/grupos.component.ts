@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GruposService } from 'src/app/services/grupos/grupos.service';
 
 @Component({
   selector: 'app-grupos',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GruposComponent implements OnInit {
 
-  constructor() { }
+  grupos: any[]
+
+  constructor(private gruposService: GruposService) { }
 
   ngOnInit() {
+    this.gruposService.getGrupos().subscribe(
+      res => {
+        this.grupos = res['grupos'];
+      },
+      err => console.error(err)
+    );
+  }
+
+  desactivarGrupo(id: number){
+    this.gruposService.deactivateGrupo(id).subscribe(
+      () => {
+        location.reload();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  activarGrupo(id: number){
+    this.gruposService.activateGrupo(id).subscribe(
+      () => {
+        location.reload();
+      },
+      err => {
+        console.log(err);
+      }
+      );
   }
 
 }

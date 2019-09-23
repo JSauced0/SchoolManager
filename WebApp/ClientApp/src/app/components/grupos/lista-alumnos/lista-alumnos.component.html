@@ -1,0 +1,20 @@
+<div class="container">
+  <h3>Lista de alumnos en el sistema</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <label> Grupo {{grupo.nombre}} </label>
+    </div>
+    </div>
+  </div>
+  <br />
+<div class="row">
+  <div class="col-md-7" *ngFor="let alumno of alumnos">
+    <div class="card text-center" *ngIf="alumno.grupoNavigation.id == id && alumno.activo == true">
+        <div class="card-header">
+          <b>{{ alumno.nombre }}</b>
+        </div>
+      </div>
+  <br />
+</div>
+</div>
+

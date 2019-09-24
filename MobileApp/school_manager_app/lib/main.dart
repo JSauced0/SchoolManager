@@ -25,25 +25,4 @@ class _HomePageState extends State<HomePage> {
     home: HomeStuck()); 
   }
 }
-/*
 
-@JsonSerializable()
-class Alumno {
-  final int id;
-  final String expediente;
-  final String nombre;
-  final int grupo;
-  final bool activo;
-
-  Alumno({this.id, this.expediente, this.nombre, this.grupo, this.activo});
-
-  factory Alumno.fromJson(Map<String, dynamic> json) {
-    return Alumno(
-        id: json['id'] as int,
-        expediente: json['expediente'] as String,
-        nombre: json['nombre'] as String,
-        grupo: json['grupo'] as int,
-        activo: json['activo'] as bool);
-  }
-}
-*/

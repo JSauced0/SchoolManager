@@ -64,4 +64,7 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 *.lock
+<<<<<<< HEAD
 MobileApp/school_manager_app/pubspec.lock
+=======
+>>>>>>> 42b26497f1884cf3417de87fea31798adda6d735

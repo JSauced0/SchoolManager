@@ -33,38 +33,7 @@ class GrupoModificar extends State<grupoModificar> {
     "nombre": "Eduardo Flores",
     "grupo": 2,
     "activo": true,
-    "grupoNavigation": {
-      "id": 2,
-      "nombre": "1-A",
-      "grado": 1,
-      "maestro": 1,
-      "activo": true,
-      "gradoNavigation": {
-        "id": 1,
-        "grado": "1ro",
-        "asignaciones": [],
-        "grupos": []
-      },
-      "maestroNavigation": {
-        "id": 1,
-        "expediente": "125634942",
-        "nombre": "Javier",
-        "apellido": "Lopez",
-        "direccion": "No",
-        "numero": "66321455",
-        "activo": true,
-        "grupos": []
-      },
-      "alumnos": [
-        {
-          "id": 63,
-          "expediente": "1602022006",
-          "nombre": "Jesus Saucedo",
-          "grupo": 2,
-          "activo": true
-        }
-      ]
-    }
+  
   };
 
   var respuesta = await http.put(

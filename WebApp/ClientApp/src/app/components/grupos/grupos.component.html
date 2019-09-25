@@ -36,20 +36,6 @@
             Editar
           </a>
         </div>
-        <div class="col-md-4" *ngIf="grupo.activo == true; else elseBlocks">
-          <button class="btn btn-warning btn-block"  (click)="desactivarGrupo(grupo.id)">
-            <i class="material-icons">thumb_down</i>
-            Desactivar
-          </button>
-        </div>
-        <ng-template #elseBlocks>
-            <div class="col-md-4">
-              <button class="btn btn-success btn-block" (click)="activarGrupo(grupo.id)">
-                <i class="material-icons">thumb_up</i>
-                Activar
-              </button>
-            </div>
-         </ng-template>
          <div class="col-md-4">
           <a [routerLink]="['/grupos/listaAlumnos', grupo.id]" class="btn btn-secondary btn-block">
             <i class="material-icons">face</i>

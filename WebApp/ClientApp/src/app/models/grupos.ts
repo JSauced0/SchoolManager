@@ -4,4 +4,5 @@ export interface Grupo {
     grado: number;
     maestro: number;
     activo: boolean;
+    gradoNavigation: any;
 }

@@ -24,7 +24,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Grados>>> GetGrados()
         {
-            return await grados.ToListAsync();
+            return Ok( new { grados = await grados.ToListAsync()});
         }
 
         // GET api/values/5

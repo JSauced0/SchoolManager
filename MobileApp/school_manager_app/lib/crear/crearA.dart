@@ -20,6 +20,31 @@ class crearAodificar extends State<crearA> {
     });
   }
 
+  String exped = "5548512S";
+  String nombre = "Dimitriii";
+  int grupo = 2;
+
+  Future crearAlumno() async {     //PERTICION HTTP PARA HACER PUT POST JSON
+        var data = {
+        "expediente": exped,
+        "nombre": nombre,
+        "grupo": grupo,
+        "activo": true
+      };
+
+        var respuesta = await http.post(
+            Uri.encodeFull("http://edfloreshz.somee.com/api/alumnos/"),
+            body:json.encode(data),
+            headers: {
+              "content-type": "application/json",
+              "accept": "application/json",
+            });
+        print(respuesta.statusCode);
+        print(respuesta.body);
+        //debugPrint(data.toString())
+    }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +54,7 @@ class crearAodificar extends State<crearA> {
       body: Container(
         padding: EdgeInsets.all(12.0),
         alignment: Alignment.center,
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Text(
               "Agregar Alumno",
@@ -38,14 +63,37 @@ class crearAodificar extends State<crearA> {
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Nombre'),
+              maxLength: 40,
+              maxLengthEnforced: true,
+              onChanged: (String str){
+                setState(() {
+                  nombre = str;
+                });
+              },
             ),
-            TextFormField(decoration: InputDecoration(labelText: "Grupo: ")),
+            TextFormField(decoration: InputDecoration(labelText: "Grupo: "),
+             keyboardType: TextInputType.number,
+              onChanged: (String gp){
+                setState(() {
+                 grupo = int.parse(gp); 
+                });
+              },
+            ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Expediente'),
+              maxLength: 10,
+              maxLengthEnforced: true,
+              onChanged: (String ex){
+                setState(() {
+                 exped = ex; 
+                });
+              },
             ),
             RaisedButton(
               child: Text("Agregar"),
-              onPressed: () {},
+              onPressed: () {
+                crearAlumno();
+              },
               color: Colors.green,
               textColor: Colors.white,
               padding: EdgeInsets.fromLTRB(10, 10, 10, 10),

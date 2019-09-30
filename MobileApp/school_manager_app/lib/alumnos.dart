@@ -28,7 +28,7 @@ class _AlumnoRender extends State<AlumnosList> {
     Navigator.push(
       context, new MaterialPageRoute(
         builder: (BuildContext context) => 
-          new alumnoModificar("${userData[index]["id"]}"," ${userData[index]["nombre"]}",
+          new alumnoModificar("${userData[index]["id"]}","${userData[index]["expediente"]}"," ${userData[index]["nombre"]}",
           "${userData[index]["grupo"]}",("${userData[index]["activo"]}"))
         
       ));

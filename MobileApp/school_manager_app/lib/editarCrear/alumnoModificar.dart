@@ -7,57 +7,41 @@ import 'package:json_annotation/json_annotation.dart'; // to conver http respons
 
 // STATEFUL WIDGET LIFE CYCLE
 class alumnoModificar extends StatefulWidget {
-  alumnoModificar(this.id, this.nombre, this.grupo, this.status) : super();
-  final String id, nombre, grupo;
+  alumnoModificar(this.id, this.expediente,this.nombre, this.grupo, this.status) : super();
+  String id, nombre, expediente;
+  String grupo;
   String status;
   @override
-  AlumnoModificar createState() => AlumnoModificar(id, nombre, grupo, status);
+  AlumnoModificar createState() => AlumnoModificar(id,expediente,nombre, grupo, status);
 }
 
-Future modificarDatos() async {     //PERTICION HTTP PARA HACER PUT POST JSON
+
+
+class AlumnoModificar extends State<alumnoModificar> {
+
+  AlumnoModificar(this.id,this.expediente, this.nombre, this.grupo, this.status) : super();
+  String id, expediente,nombre;
+  String grupo;
+  String status;
+  bool isSwitched= true;
+  cambiarActividad() {
+    setState(() {
+      isSwitched = !isSwitched;
+    });
+  }
+
+  Future modificarDatos() async {     //PERTICION HTTP PARA HACER PUT POST JSON
   var data = {
-    "id": 3,
-    "expediente": "1250202068",
-    "nombre": "Eduardo Flores",
-    "grupo": 2,
-    "activo": true,
-    "grupoNavigation": {
-      "id": 2,
-      "nombre": "1-A",
-      "grado": 1,
-      "maestro": 1,
-      "activo": true,
-      "gradoNavigation": {
-        "id": 1,
-        "grado": "1ro",
-        "asignaciones": [],
-        "grupos": []
-      },
-      "maestroNavigation": {
-        "id": 1,
-        "expediente": "125634942",
-        "nombre": "Javier",
-        "apellido": "Lopez",
-        "direccion": "No",
-        "numero": "66321455",
-        "activo": true,
-        "grupos": []
-      },
-      "alumnos": [
-        {
-          "id": 63,
-          "expediente": "1602022006",
-          "nombre": "Jesus Saucedo",
-          "grupo": 2,
-          "activo": true
-        }
-      ]
-    }
-  };
+   "id":id,
+   "expediente": expediente ,
+   "nombre": nombre,
+   "grupo": int.parse(grupo),
+   "activo": isSwitched
+};
 
   var respuesta = await http.put(
-      Uri.encodeFull("http://edfloreshz.somee.com/api/alumnos/"),
-      body: utf8.encode(json.encode(data)),
+      Uri.encodeFull("http://edfloreshz.somee.com/api/alumnos/${this.id}"),
+      body:json.encode(data),
       headers: {
         "content-type": "application/json",
         "accept": "application/json",
@@ -66,17 +50,6 @@ Future modificarDatos() async {     //PERTICION HTTP PARA HACER PUT POST JSON
   print(respuesta.body);
   //debugPrint(data.toString())
 }
-
-class AlumnoModificar extends State<alumnoModificar> {
-  AlumnoModificar(this.id, this.nombre, this.grupo, this.status) : super();
-  final String id, nombre, grupo;
-  String status;
-  bool isSwitched = true;
-  cambiarActividad() {
-    setState(() {
-      isSwitched = !isSwitched;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +60,7 @@ class AlumnoModificar extends State<alumnoModificar> {
       body: Container(
         padding: EdgeInsets.all(12.0),
         alignment: Alignment.center,
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Text(
               "Nombre : " + "$nombre ",
@@ -96,9 +69,20 @@ class AlumnoModificar extends State<alumnoModificar> {
             ),
             TextFormField(
               decoration: InputDecoration(labelText: '$nombre'),
+              onChanged: (String str){
+                setState(() {
+                  nombre = str;
+                });
+              },
             ),
             TextFormField(
-                decoration: InputDecoration(labelText: "Grupo: " + '$grupo')),
+                decoration: InputDecoration(labelText: "Grupo: " + '$grupo'),
+                keyboardType: TextInputType.number,
+                onChanged: (String str){
+                setState(() {
+                  grupo = str;
+                });
+              }),
             Switch(
               value: isSwitched,
               onChanged: (isSwitched) {

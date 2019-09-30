@@ -17,9 +17,9 @@ class grupoModificar extends StatefulWidget {
 
 class GrupoModificar extends State<grupoModificar> {
   GrupoModificar(this.id, this.nombre, this.grado,this.status) : super();
-  final String id, nombre, grado;
+  String id, nombre, grado;
   String status;
-  bool isSwitched = true;
+  bool isSwitched= true;
   cambiarActividad() {
     setState(() {
       isSwitched = !isSwitched;
@@ -27,17 +27,16 @@ class GrupoModificar extends State<grupoModificar> {
   }
 
   Future modificarDatos() async {     //PERTICION HTTP PARA HACER PUT POST JSON
-  var data = {
-    "id": 3,
-    "expediente": "1250202068",
-    "nombre": "Eduardo Flores",
-    "grupo": 2,
-    "activo": true,
-  
-  };
+   var data = {
+  "id": id,
+   "nombre": nombre,
+   "grado": int.parse(grado),
+   "maestro": 1,
+   "activo": isSwitched
+};
 
   var respuesta = await http.put(
-      Uri.encodeFull("http://edfloreshz.somee.com/api/alumnos/"),
+      Uri.encodeFull("http://edfloreshz.somee.com/api/grupos/${this.id}"),
       body: utf8.encode(json.encode(data)),
       headers: {
         "content-type": "application/json",
@@ -57,7 +56,7 @@ class GrupoModificar extends State<grupoModificar> {
       body: Container(
         padding: EdgeInsets.all(12.0),
         alignment: Alignment.center,
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Text(
               "Nombre : " + "$nombre ",
@@ -66,9 +65,21 @@ class GrupoModificar extends State<grupoModificar> {
             ),
             TextFormField(
               decoration: InputDecoration(labelText: '$nombre'),
+              maxLength: 4,
+              maxLengthEnforced: true,
+               onChanged: (String str){
+                setState(() {
+                  nombre = str;
+                });
+              },
             ),
             TextFormField(
-                decoration: InputDecoration(labelText: "Grado: " + '$grado')),
+                decoration: InputDecoration(labelText: "Grado: " + '$grado'),
+                onChanged: (String str){
+                setState(() {
+                  grado = str;
+                });
+              },),
             Switch(
               value: isSwitched,
               onChanged: (isSwitched) {

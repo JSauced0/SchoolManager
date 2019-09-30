@@ -14,15 +14,15 @@ export class ManageMaestrosComponent implements OnInit {
 
   maestro: Maestro = {
     id: 0,
-    expediente: "",
-    nombre: "",
-    apellido: "",
-    direccion: "",
-    numero: "",
+    expediente: '',
+    nombre: '',
+    apellido: '',
+    direccion: '',
+    numero: '',
     activo: true
   };
-  grupos: any = []
-  edit: boolean = false
+  grupos: any = [];
+  edit = false;
 
   constructor(
     private maestroService: MaestrosService,
@@ -38,7 +38,7 @@ export class ManageMaestrosComponent implements OnInit {
       this.maestroService.getMaestro(params.id).subscribe(
         res => {
           this.maestro = res['maestros'][0];
-          this.edit = true
+          this.edit = true;
         },
         err => console.error(err)
       );

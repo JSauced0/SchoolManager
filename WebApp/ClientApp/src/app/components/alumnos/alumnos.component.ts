@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AlumnosComponent implements OnInit {
   @HostBinding('class') classes = 'row';
-  alumnos: any = []
+  alumnos: any = [];
   constructor(private alumnosService: AlumnosService, appRef: ApplicationRef) { }
 
   ngOnInit() {
@@ -19,12 +19,12 @@ export class AlumnosComponent implements OnInit {
         this.alumnos = res['alumnos'];
       },
       err=>{
-        console.error(err)
+        console.error(err);
       }
     );
   }
 
-  desactivarAlumno(id: number){
+  desactivarAlumno(id: number) {
     this.alumnosService.deactivateAlumno(id).subscribe(
       () => {
         location.reload();
@@ -35,7 +35,7 @@ export class AlumnosComponent implements OnInit {
     );
   }
 
-  activarAlumno(id: number){
+  activarAlumno(id: number) {
     this.alumnosService.activateAlumno(id).subscribe(
       () => {
         location.reload();

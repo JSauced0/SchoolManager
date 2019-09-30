@@ -20,8 +20,8 @@ export class ManageAlumnosComponent implements OnInit {
     activo: true,
     grupoNavigation: null
   };
-  grupos: any = []
-  edit: boolean = false
+  grupos: any = [];
+  edit = false;
 
 
   constructor(
@@ -38,10 +38,10 @@ export class ManageAlumnosComponent implements OnInit {
         .subscribe(
           res => {
             this.alumno = res['alumnos'][0];
-            this.edit = true
+            this.edit = true;
           },
           err => console.error(err)
-        )
+        );
     }
     this.gruposService.getGrupos().subscribe(
       res => {
@@ -62,6 +62,7 @@ export class ManageAlumnosComponent implements OnInit {
   }
 
   putAlumno() {
+    this.alumno.grupoNavigation = null;
     this.alumnoService.updateAlumno(this.alumno.id, this.alumno).subscribe(
       res => {
         console.log(this.alumno);

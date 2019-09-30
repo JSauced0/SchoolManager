@@ -8,7 +8,7 @@ import { MaestrosService } from 'src/app/services/maestros/maestros.service';
 })
 export class MaestrosComponent implements OnInit {
   @HostBinding('class') classes = 'row';
-  maestros: any = []
+  maestros: any = [];
 
   constructor(private maestrosService: MaestrosService) { }
 
@@ -17,13 +17,13 @@ export class MaestrosComponent implements OnInit {
       res => {
         this.maestros = res['maestros'];
       },
-      err=>{
-        console.error(err)
+      err => {
+        console.error(err);
       }
     );
   }
 
-  desactivarMaestro(id: number){
+  desactivarMaestro(id: number) {
     this.maestrosService.deactivateMaestro(id).subscribe(
       () => {
         location.reload();
@@ -34,7 +34,7 @@ export class MaestrosComponent implements OnInit {
     );
   }
 
-  activarMaestro(id: number){
+  activarMaestro(id: number) {
     this.maestrosService.activateMaestro(id).subscribe(
       () => {
         location.reload();

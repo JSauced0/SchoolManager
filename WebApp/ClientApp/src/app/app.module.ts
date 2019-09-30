@@ -42,7 +42,6 @@ import { GruposService } from './services/grupos/grupos.service';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full' },
       {path: 'alumnos', component: AlumnosComponent},

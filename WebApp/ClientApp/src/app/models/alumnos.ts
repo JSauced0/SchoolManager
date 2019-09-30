@@ -4,5 +4,5 @@ export interface Alumno {
     expediente: string;
     grupo: number;
     activo: boolean;
-    grupoNavigation: any
+    grupoNavigation: any;
 }

@@ -14,16 +14,18 @@ export class ManageGruposComponent implements OnInit {
 @HostBinding('class') classes = 'row';
 grupo: Grupo = {
   id: 0,
-  nombre:'',
-  grado:0,
+  nombre: '',
+  grado: 0,
   maestro: null,
   activo: true,
+  maestroNavigation: null,
   gradoNavigation: null
 };
 
-maestros: any[]
-grados: any[]
-edit: boolean = false
+maestros: any[];
+grados: any[];
+edit = false;
+
   constructor(
     private gruposService: GruposService,
     private maestrosService: MaestrosService,
@@ -35,45 +37,45 @@ edit: boolean = false
   ngOnInit() {
     const params = this.activatedRoute.snapshot.params;
 
-    if(params.id){
+    if (params.id) {
       this.gruposService.getGrupo(params.id)
       .subscribe(
         res =>{
           this.grupo = res['grupos'][0];
-          this.edit = true
+          this.edit = true;
         },
         err => console.error(err)
-      )
+      );
     }
 
     this.gradosService.getGrados().subscribe(
-      res=>{
+      res => {
         this.grados = res['grados'];
       },
-      err=>console.error(err)
+      err => console.error(err)
     );
 
     this.maestrosService.getMaestros().subscribe(
-      res=>{
-        this.maestros = res['maestros'];
+      res => {
+        this.maestros = res['maestros'].filter((a: { activo: boolean; }) => a.activo === true);
       },
-      err=>console.error(err)
+      err => console.error(err)
     );
   }
 
-  saveGrupo(){
+  saveGrupo() {
     this.gruposService.saveGrupo(this.grupo).subscribe(
-      res =>{
+      res => {
         console.log(res);
         this.router.navigate(['/grupos']);
       },
-      err =>console.error(err)
+      err => console.error(err)
     );
   }
 
-  putGrupo(){
+  putGrupo() {
     this.gruposService.updateGrupo(this.grupo.id, this.grupo).subscribe(
-      res=>{
+      res => {
         console.log(this.grupo);
         this.router.navigate(['/grupos']);
       },

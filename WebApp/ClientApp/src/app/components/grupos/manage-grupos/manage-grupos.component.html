@@ -1,44 +1,43 @@
-
 <div class="col-md-4 offset-md-2">
-  <div class="card">
-    <div class="card-body">
-      <form>
-        <h3>Grupos</h3>
-        <div class="form-group">
-          <input type="text" name="nombre" [(ngModel)]="grupo.nombre" placeholder="Nombre" class="form-control">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <h3>Grupos</h3>
+                <div class="form-group">
+                    <input type="text" name="nombre" [(ngModel)]="grupo.nombre" placeholder="Nombre" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control" [(ngModel)]="grupo.grado" name="gradoSelect" id="gradoSelect">
+                        <option name="grupo" *ngFor="let grado of grados" [ngValue]=grado.id>{{grado.grado}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" [(ngModel)]="grupo.maestro" name="maestroSelect" id="maestroSelect">
+                        <option name="maestro" *ngFor="let maestro of maestros" [ngValue]=maestro.id>{{maestro.nombre}}
+                        </option>
+                    </select>
+                </div>
+                <button class="btn btn-success btn-block" (click)="edit ? putGrupo() : saveGrupo()">
+                    Guardar
+                </button>
+            </form>
         </div>
-       
-        <div class="form-group">
-          <select class="form-control"  [(ngModel)]="grupo.grado"  name="gradoSelect" id="gradoSelect">
-              <option name="grupo"  *ngFor="let grado of grados" [ngValue]=grado.id>{{grado.grado}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <select class="form-control"  [(ngModel)]="grupo.maestros"  name="maestroSelect" id="maestroSelect">
-              <option name="maestro"  *ngFor="let maestro of maestros" [ngValue]=maestro.id>{{maestro.nombre}}</option>
-          </select>
-        </div>
-          <button class="btn btn-success btn-block" (click)="edit ? putGrupo() : saveGrupo()">
-          Guardar
-        </button>
-      </form>
     </div>
-  </div>
 </div>
 
 <div class="col-md-4">
     <div class="card text-center">
-      <div class="card-header">
-          <label>Grupo:{{grupo.nombre}}  </label> 
-      </div>
-      <div class="card-body">
-        <div>
-            <label>Maestro asignado:{{maestro.nombre}} </label> 
+        <div class="card-header">
+            <label>Grupo:{{grupo.nombre}} </label>
         </div>
-        <div>
-            <label>Grado:{{grupo.grado}} </label> 
+        <div class="card-body">
+            <div>
+                <label>Maestro asignado: {{grupo.maestroNavigation.nombre}} </label>
+            </div>
+            <div>
+                <label>Grado: {{grupo.gradoNavigation.grado}} </label>
+            </div>
         </div>
-      </div>
-  
     </div>
-  </div>
+</div>

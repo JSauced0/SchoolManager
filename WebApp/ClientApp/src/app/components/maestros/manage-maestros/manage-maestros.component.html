@@ -4,19 +4,19 @@
             <form>
                 <h3>Registrar maestro</h3>
                 <div class="form-group">
-                    <input type="text" name="nombre" [(ngModel)]="maestro.nombre" placeholder="Nombre" class="form-control">
+                    <input type="text" name="nombre" [(ngModel)]="maestro.nombre" placeholder="Nombre" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="apellido" [(ngModel)]="maestro.apellido" placeholder="Apellido" class="form-control">
+                    <input type="text" name="apellido" [(ngModel)]="maestro.apellido" placeholder="Apellido" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="expediente" [(ngModel)]="maestro.expediente" placeholder="Expediente" class="form-control">
+                    <input type="text" name="expediente" [(ngModel)]="maestro.expediente" placeholder="Expediente" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="direccion" [(ngModel)]="maestro.direccion" placeholder="Direccion" class="form-control">
+                    <input type="text" name="direccion" [(ngModel)]="maestro.direccion" placeholder="Direccion" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="numero" [(ngModel)]="maestro.numero" placeholder="Telefono" class="form-control">
+                    <input type="text" name="numero" [(ngModel)]="maestro.numero" placeholder="Telefono" class="form-control" required>
                 </div>
                 <input type="text" name="activo" [(ngModel)]="maestro.activo" placeholder="Activo" class="form-control" hidden>
                 <button class="btn btn-success btn-block" (click)="edit ? putMaestro() : saveMaestro()">

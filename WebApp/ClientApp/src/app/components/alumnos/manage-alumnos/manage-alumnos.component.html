@@ -4,13 +4,13 @@
             <form>
                 <h3>Alumno</h3>
                 <div class="form-group">
-                    <input type="text" name="nombre" [(ngModel)]="alumno.nombre" placeholder="Nombre" class="form-control">
+                    <input type="text" name="nombre" [(ngModel)]="alumno.nombre" placeholder="Nombre" class="form-control" requerid #spy>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="expediente" [(ngModel)]="alumno.expediente" placeholder="Expediente" class="form-control">
+                    <input type="text" name="expediente" [(ngModel)]="alumno.expediente" placeholder="Expediente" class="form-control" requerid>
                 </div>
                 <div class="form-group">
-                    <select class="form-control" [(ngModel)]="alumno.grupo" name="grupoSelect" id="grupoSelect">
+                    <select class="form-control" [(ngModel)]="alumno.grupo" name="grupoSelect" id="grupoSelect" requerid>
                         <option name="grupo" *ngFor="let grupo of grupos" [ngValue]=grupo.id>{{grupo.nombre}}</option>
                     </select>
                 </div>
